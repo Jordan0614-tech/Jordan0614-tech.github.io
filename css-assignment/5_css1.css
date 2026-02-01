@@ -28,6 +28,7 @@ h3 {
 p {
   line-height: 1.6;
   margin-bottom: 15px;
+  width: auto;
 }
 
 
@@ -43,6 +44,7 @@ p {
 
 #paragraph2 + p {
   margin-top: 20px;
+  
 }
 
 article {
@@ -56,10 +58,10 @@ article {
 .blue {
     background-color: #00008b;
   color: white;   
-  width: 95%;
+  width: auto;
   padding: 20px;
   border:2px solid black;
-  margin:25px 0;
+  margin:25px 0 25px 0;
 }
 
 /* link*/
