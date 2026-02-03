@@ -1,0 +1,243 @@
+/* reg style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+
+#jumpMenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: #2c3e50;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+#jumpMenu h2 {
+    color: #ecf0f1;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+#jumpMenu a {
+    display: block;
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 8px 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#jumpMenu a:hover {
+    background-color: #34495e;
+    color: #3498db;
+}
+
+/*offset jummenu width */
+main {
+    margin-left: 15%;
+    padding-top: 80px; 
+    padding-bottom: 60px; /* thank you message */
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 15%;
+    right: 0;
+    background-color: #3498db;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > p {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    gap: 10px;
+}
+
+header button {
+    background-color: white;
+    color: #3498db;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+header button:hover {
+    background-color: #2c3e50;
+    color: white;
+}
+
+/* heaader1*/
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin: 30px 0;
+    font-size: 2.2em;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 30px;
+    justify-content: flex-start;
+}
+
+article {
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+article h2 {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 8px;
+}
+
+article p {
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #555;
+}
+
+article a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+article a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+
+#thanks {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2ecc71;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 50;
+}
+
+/* footer section */
+footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+footer > p {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+address {
+    font-style: normal;
+}
+
+address div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 15px;
+}
+
+address span:nth-child(odd) {
+    font-weight: bold;
+    color: #3498db;
+}
+
+address a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+address a:hover {
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 1200px) {
+    #container {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #jumpMenu {
+        width: 20%;
+    }
+    
+    main {
+        margin-left: 20%;
+    }
+    
+    header {
+        left: 20%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+    
+    header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    header button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+}
