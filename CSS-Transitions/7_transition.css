@@ -1,69 +1,269 @@
-/* correc format */
+/* reg style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+
+#jumpMenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: #5d4037;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+#jumpMenu h2 {
+    color: #f5f5dc;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+#jumpMenu a {
+    display: block;
+    color: #f5f5dc;
+    text-decoration: none;
+    padding: 8px 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+/* color change w/hover*/
+#jumpMenu a:hover {
+    background-color: #6d4c41;
+    color: #a0826d;
+}
+
+/*offset jummenu width */
+main {
+    margin-left: 15%;
+    padding-top: 80px; 
+    padding-bottom: 60px; /* thank you message */
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 15%;
+    right: 0;
+    background-color: #6b8e23;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > p {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    gap: 10px;
+}
+
+header button {
+    background-color: white;
+    color: #5d4037;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+/* Navigation button hover - background color change */
+header button:hover {
+    background-color: #8b7355;
+    color: white;
+}
+
+/* heaader1*/
+h1 {
+    text-align: center;
+    color: #5d4037;
+    margin: 30px 0;
+    font-size: 2.2em;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 30px;
+    justify-content: flex-start;
+}
+
+/* transition use 2 sec and light color */
+article {
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #999;
+    transition: transform 2s ease, box-shadow 2s ease, color 2s ease, padding 2s ease;
+}
+
+/* darker */
+article:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    color: #333;
+    padding: 25px;
+}
+
+article h2 {
+    color: #6b8e23;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 8px;
+}
+
+article p {
+    margin-bottom: 15px;
+    text-align: justify;
+    color: inherit;
+}
+
+
 article p:first-of-type::first-letter {
     font-family: 'Times New Roman', Times, serif;
     font-size: 36px;
 }
 
-/* insert google link */
+article a {
+    color: #6b8e23;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+article a:hover {
+    color: #5d4037;
+    text-decoration: underline;
+}
+
+/* ggogle arrow*/
 article p a[href*="google.com"]::after {
     content: '';
     display: inline-block;
     width: 12px;
     height: 12px;
     margin-left: 5px;
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"%3E%3Cpath d="M 1,5 11,5 M 7,1 11,5 7,9" fill="none" stroke="%230645ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"%3E%3Cpath d="M 1,5 11,5 M 7,1 11,5 7,9" fill="none" stroke="%236b8e23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
     background-size: contain;
     background-repeat: no-repeat;
     vertical-align: middle;
 }
 
-/* add initial transition color*/
-article {
-    color: #888;
-    transition: color 2s ease, transform 2s ease, padding 2s ease;
-    padding: 10px;
+
+#thanks {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #c17a5b;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 50;
 }
 
-
-article:hover {
-    color: #000;
-    transform: scale(1.05);
-    padding: 20px;
+/* footer section */
+footer {
+    background-color: #4e342e;
+    color: #f5f5dc;
+    padding: 30px;
+    margin-top: 40px;
 }
 
-nav button {
-    transition: background-color 0.3s ease;
-    cursor: pointer;
+footer > p {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
-nav button:hover {
-    background-color: #4CAF50;
+address {
+    font-style: normal;
 }
 
-/* hide jump menu first */
-#jumpMenu {
-    display: none;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+address div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 15px;
 }
 
-/* unhide jump menu after hover */
-#recentArticles:hover + #jumpMenu,
-#jumpMenu:hover {
-    display: block;
+address span:nth-child(odd) {
+    font-weight: bold;
+    color: #a0826d;
 }
 
-/* links keep hover effects*/
-#jumpMenu li a {
-    display: block;
-    padding: 8px 12px;
+address a {
+    color: #a0826d;
     text-decoration: none;
-    color: #333;
-    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-#jumpMenu li a:hover {
-    color: #fff;
-    background-color: #2196F3;
+address a:hover {
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 1200px) {
+    #container {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #jumpMenu {
+        width: 20%;
+    }
+    
+    main {
+        margin-left: 20%;
+    }
+    
+    header {
+        left: 20%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+    
+    header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    header button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
 }
