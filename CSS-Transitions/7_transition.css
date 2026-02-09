@@ -35,6 +35,7 @@ body {
     font-size: 0.9em;
     font-weight: 600;
     transition: background-color 0.3s ease;
+    position: relative;
 }
 
 /* hovor and change background*/
@@ -47,16 +48,27 @@ body {
 #menuItems #jumpMenu {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 10px);
     left: 30px;
     background-color: #5d4037;
     padding: 15px;
+    padding-top: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     list-style: none;
-    margin-top: 0;
+    margin-top: -15px;
     min-width: 150px;
     z-index: 1000;
+}
+
+#menuItems #jumpMenu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: transparent;
 }
 
 /* show when over recent articles */
