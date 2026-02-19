@@ -1,10 +1,7 @@
-// ── Toggle Forms ─────────────────────────────────────────────────────────────
-
 function showFilter() {
   const filterForm = document.getElementById("filterContent");
   const newForm    = document.getElementById("newContent");
-
-  // Toggle filter form; hide the add-new form
+//show or hide form
   if (filterForm.style.display === "block") {
     filterForm.style.display = "none";
   } else {
@@ -17,7 +14,7 @@ function showAddNew() {
   const newForm    = document.getElementById("newContent");
   const filterForm = document.getElementById("filterContent");
 
-  // Toggle add-new form; hide the filter form
+  // show toggle
   if (newForm.style.display === "flex") {
     newForm.style.display = "none";
   } else {
@@ -26,7 +23,6 @@ function showAddNew() {
   }
 }
 
-// ── Filter Articles ───────────────────────────────────────────────────────────
 
 function filterArticles() {
   const showOpinion = document.getElementById("opinionCheckbox").checked;
@@ -46,13 +42,12 @@ function filterArticles() {
   });
 }
 
-// ── Add New Article ───────────────────────────────────────────────────────────
 
 function addNewArticle() {
   const title   = document.getElementById("inputHeader").value.trim();
   const bodyText = document.getElementById("inputArticle").value.trim();
 
-  // Determine which radio button is selected
+  // radio but select
   let articleType = "";
   let markerLabel = "";
   if (document.getElementById("opinionRadio").checked) {
@@ -66,13 +61,13 @@ function addNewArticle() {
     markerLabel = "Update";
   }
 
-  // Require all fields to be filled
+  // fill
   if (!title || !bodyText || !articleType) {
-    alert("Please fill in the title, select a type, and enter article text.");
+    alert("fill the title select a type, and enter article text.");
     return;
   }
 
-  // Build the new article element
+  // create anew article
   const newArticle = document.createElement("article");
   newArticle.classList.add(articleType);
 
@@ -82,10 +77,10 @@ function addNewArticle() {
     '<p>' + bodyText + '</p>' +
     '<p><a href="moreDetails.html">Read more...</a></p>';
 
-  // Append to the article list
+  // append it
   document.getElementById("articleList").appendChild(newArticle);
 
-  // Clear the form and hide it
+  // clear and hide
   document.getElementById("inputHeader").value  = "";
   document.getElementById("inputArticle").value = "";
   document.getElementById("opinionRadio").checked = false;
