@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Team Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e6f2f7;
+        }
+
+        .container {
+            background: white;
+            width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 20px;
+            border: 6px solid goldenrod;
+        }
+
+        img {
+            height: 150px;
+        }
+
+        select {
+            width: 45%;
+            margin: 5px;
+        }
+
+        .team {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .pokemon-card {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pokemon-card img {
+            height: 80px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Pokemon Team Builder</h2>
+
+    <input type="text" id="pokemonInput" placeholder="Name or ID">
+    <button id="findBtn">Find</button>
+
+    <div id="pokemonDisplay" style="margin-top:20px;">
+        <img id="pokemonImage" src="" alt="">
+        <br><br>
+        <audio id="pokemonAudio" controls></audio>
+        <br><br>
+
+        <div>
+            <select id="move1"></select>
+            <select id="move2"></select>
+            <select id="move3"></select>
+            <select id="move4"></select>
+        </div>
+
+        <br>
+        <button id="addBtn">Add to Team</button>
+    </div>
+
+    <div class="team" id="teamContainer">
+        <h3>Yor Team</h3>
+    </div>
+
+</div>
+
+<script>
+
+const cache = {};   // make sure to cache responses
+let currentPokemon = null;
+
+const findBtn = document.getElementById("findBtn");
+const addBtn = document.getElementById("addBtn");
+
+findBtn.addEventListener("click", fetchPokemon);
+addBtn.addEventListener("click", addToTeam);
+
+async function fetchPokemon() {
+
+    const input = document.getElementById("pokemonInput").value.toLowerCase().trim();
+    if (!input) return;
+
+    // ifheck cache
+    if (cache[input]) {
+        console.log("Loaded from cache");
+        displayPokemon(cache[input]);
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${input}`);
+        if (!response.ok) throw new Error("Pokemon not found");
+
+        const data = await response.json();
+
+        cache[input] = data;  
+        displayPokemon(data);
+    } catch (error) {
+        alert("Pokemon not found!");
+    }
+}
+
+function displayPokemon(data) {
+
+    currentPokemon = data;
+
+    // take image
+    const img = document.getElementById("pokemonImage");
+    img.src = data.sprites.front_default;
+
+    // get audio
+    const audio = document.getElementById("pokemonAudio");
+    audio.src = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${data.id}.ogg`;
+
+    // set of moves
+    const moves = data.moves;
+
+    populateDropdown("move1", moves);
+    populateDropdown("move2", moves);
+    populateDropdown("move3", moves);
+    populateDropdown("move4", moves);
+}
+
+function populateDropdown(id, moves) {
+    const dropdown = document.getElementById(id);
+    dropdown.innerHTML = "";
+
+    // setlim to first 20, maintain size
+    const limitedMoves = moves.slice(0, 20);
+
+    limitedMoves.forEach(moveObj => {
+        const option = document.createElement("option");
+        option.value = moveObj.move.name;
+        option.textContent = moveObj.move.name;
+        dropdown.appendChild(option);
+    });
+}
+
+function addToTeam() {
+
+    if (!currentPokemon) return;
+
+    const teamContainer = document.getElementById("teamContainer");
+
+    const selectedMoves = [
+        document.getElementById("move1").value,
+        document.getElementById("move2").value,
+        document.getElementById("move3").value,
+        document.getElementById("move4").value
+    ];
+
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+
+    const img = document.createElement("img");
+    img.src = currentPokemon.sprites.front_default;
+
+    const info = document.createElement("div");
+
+    const name = document.createElement("h4");
+    name.textContent = currentPokemon.name;
+
+    const moveList = document.createElement("ul");
+    selectedMoves.forEach(move => {
+        const li = document.createElement("li");
+        li.textContent = move;
+        moveList.appendChild(li);
+    });
+
+    info.appendChild(name);
+    info.appendChild(moveList);
+
+    card.appendChild(img);
+    card.appendChild(info);
+
+    teamContainer.appendChild(card);
+}
+
+</script>
+
+</body>
+</html>
